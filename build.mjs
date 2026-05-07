@@ -1,4 +1,5 @@
 import * as esbuild from 'esbuild';
+import { cp } from 'node:fs/promises';
 
 const args = new Set(process.argv.slice(2));
 const isServe = args.has('--serve');
@@ -20,6 +21,8 @@ const ctx = await esbuild.context({
   },
   logLevel: 'info',
 });
+
+await cp('public', 'dist', { recursive: true });
 
 if (isServe) {
   await ctx.serve({ servedir: '.', port: 8000, host: '0.0.0.0' });

@@ -227,6 +227,37 @@ input[type="file"] { display: none; }
 .status-pill.connected .dot { background: var(--ok); }
 .status-pill.error .dot { background: var(--err); }
 
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.examples-label {
+  font-size: 0.85rem;
+  margin-right: 4px;
+}
+.example {
+  display: block;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.example:hover { border-color: var(--border-hover); }
+.example.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.example img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .previews {
   display: grid;
   grid-template-columns: 1fr 1fr;

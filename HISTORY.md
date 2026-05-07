@@ -21,3 +21,10 @@ Supports auto/dark/light theme switching. Use auto theme by default and remember
 ```md
 Add latest eslint@10.3.0 with recommended settings.
 ```
+
+### 2026-05-08-public-example-images
+```md
+Add public/examples/ folder and copy sakamoto.png/sensei.png/konata.png/kenny_chito.png/rwby_logos.png/chito_yuuri.png/hakumei_mikochi.jpg/zelda.jpg/silksong.jpg from ~/Pictures/inkako/ into it.
+Add example image selection in the UI, and allow users to select and preview these example images.
+`npm run build` should include these example images and `npm run dev` should serve them correctly.
+```

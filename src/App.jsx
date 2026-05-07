@@ -15,6 +15,18 @@ const SCREEN_OPTIONS = Object.entries(SCREEN_TYPES).map(([id, dims]) => ({
   label: `Type ${id} — ${dims.width}×${dims.height}`,
 }));
 
+const EXAMPLE_IMAGES = [
+  'sakamoto.png',
+  'sensei.png',
+  'konata.png',
+  'kenny_chito.png',
+  'rwby_logos.png',
+  'chito_yuuri.png',
+  'hakumei_mikochi.jpg',
+  'zelda.jpg',
+  'silksong.jpg',
+].map((name) => ({ name, src: `dist/examples/${name}` }));
+
 const THEME_KEY = 'inkako-theme';
 const THEME_OPTIONS = [
   { id: 'auto', label: 'Auto' },
@@ -135,6 +147,20 @@ export default function App() {
       appendLog(`Loaded ${file.name} (${bm.width}×${bm.height})`);
     } catch (err) {
       appendLog(`Failed to load image: ${err.message || err}`, 'err');
+    }
+  }, [appendLog]);
+
+  const handleExample = useCallback(async (example) => {
+    try {
+      const res = await fetch(example.src);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const blob = await res.blob();
+      const bm = await loadImageBitmap(blob);
+      setImageBitmap(bm);
+      setImageName(example.name);
+      appendLog(`Loaded example ${example.name} (${bm.width}×${bm.height})`);
+    } catch (err) {
+      appendLog(`Failed to load example: ${err.message || err}`, 'err');
     }
   }, [appendLog]);
 
@@ -329,6 +355,20 @@ export default function App() {
             {imageName || 'No file selected'}
             {imageBitmap && ` · source ${imageBitmap.width}×${imageBitmap.height}`}
           </span>
+        </div>
+        <div className="examples">
+          <span className="muted examples-label">Examples:</span>
+          {EXAMPLE_IMAGES.map((ex) => (
+            <button
+              key={ex.name}
+              type="button"
+              className={`example${imageName === ex.name ? ' active' : ''}`}
+              onClick={() => handleExample(ex)}
+              title={ex.name}
+            >
+              <img src={ex.src} alt={ex.name} loading="lazy" />
+            </button>
+          ))}
         </div>
         <div className="previews" style={{ marginTop: 12 }}>
           <div className="preview">
