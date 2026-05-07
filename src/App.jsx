@@ -17,6 +17,21 @@ const SCREEN_OPTIONS = Object.entries(SCREEN_TYPES).map(([id, dims]) => ({
   label: `Type ${id} — ${dims.width}×${dims.height}`,
 }));
 
+const THEME_KEY = 'inkako-theme';
+const THEME_OPTIONS = [
+  { id: 'auto', label: 'Auto' },
+  { id: 'light', label: 'Light' },
+  { id: 'dark', label: 'Dark' },
+];
+
+function readSavedTheme() {
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved === 'light' || saved === 'dark') return saved;
+  } catch { /* ignore */ }
+  return 'auto';
+}
+
 function fmtTime(date = new Date()) {
   return date.toTimeString().slice(0, 8);
 }
@@ -25,6 +40,19 @@ export default function App() {
   const [supported] = useState(() =>
     typeof navigator !== 'undefined' && !!navigator.bluetooth,
   );
+
+  const [theme, setTheme] = useState(readSavedTheme);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'auto') {
+      delete root.dataset.theme;
+      try { localStorage.removeItem(THEME_KEY); } catch { /* ignore */ }
+    } else {
+      root.dataset.theme = theme;
+      try { localStorage.setItem(THEME_KEY, theme); } catch { /* ignore */ }
+    }
+  }, [theme]);
 
   const deviceRef = useRef(null);
   if (deviceRef.current === null) deviceRef.current = new InkakoDevice();
@@ -219,7 +247,22 @@ export default function App() {
     <div className="app">
       <header>
         <h1><span className="accent">inkako</span> · Web Bluetooth Uploader</h1>
-        <span className="sub">4-color e-ink (BWYR) image converter</span>
+        <div className="header-right">
+          <span className="sub">4-color e-ink (BWYR) image converter</span>
+          <div className="theme-toggle" role="group" aria-label="Theme">
+            {THEME_OPTIONS.map((opt) => (
+              <button
+                key={opt.id}
+                type="button"
+                className={theme === opt.id ? 'active' : ''}
+                aria-pressed={theme === opt.id}
+                onClick={() => setTheme(opt.id)}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
       </header>
 
       {!supported && (
