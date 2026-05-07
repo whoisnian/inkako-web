@@ -3,9 +3,7 @@ import { InkakoDevice, transferImage } from './bluetooth.js';
 import {
   DEFAULT_ADJUSTMENTS,
   PALETTE,
-  PALETTE_NAMES,
   colorDistribution,
-  indicesToImageData,
   loadImageBitmap,
   processImage,
 } from './imageProcessor.js';
@@ -109,7 +107,7 @@ export default function App() {
   const handleConnect = useCallback(async () => {
     if (connState === 'connecting') return;
     if (connState === 'connected') {
-      try { await deviceRef.current.disconnect(); } catch {}
+      try { await deviceRef.current.disconnect(); } catch { /* ignore */ }
       setConnState('disconnected');
       setDeviceName('');
       appendLog('Disconnected.');

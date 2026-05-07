@@ -22,12 +22,8 @@ const ctx = await esbuild.context({
 });
 
 if (isServe) {
-  const { hosts, port } = await ctx.serve({ servedir: '.', port: 8000, host: '0.0.0.0' });
-  console.log(`\n  Local:   http://localhost:${port}/`);
-  for (const host of hosts) {
-    if (host !== '0.0.0.0') console.log(`  Network: http://${host}:${port}/`);
-  }
-  console.log('\n  Note: Web Bluetooth requires HTTPS or localhost.\n');
+  await ctx.serve({ servedir: '.', port: 8000, host: '0.0.0.0' });
+  console.log('Note: Web Bluetooth requires HTTPS or localhost.\n');
 } else if (isWatch) {
   await ctx.watch();
   console.log('Watching for changes...');

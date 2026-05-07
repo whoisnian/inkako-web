@@ -16,3 +16,8 @@ Users can scan for and connect to Bluetooth device, then select and adjust image
 ```md
 Supports auto/dark/light theme switching. Use auto theme by default and remember user preferences.
 ```
+
+### 2026-05-08-eslint-config
+```md
+Add latest eslint@10.3.0 with recommended settings.
+```
