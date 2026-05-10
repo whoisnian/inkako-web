@@ -25,7 +25,7 @@ const EXAMPLE_IMAGES = [
   'hakumei_mikochi.jpg',
   'zelda.jpg',
   'silksong.jpg',
-].map((name) => ({ name, src: `dist/examples/${name}` }));
+].map((name) => ({ name, src: `examples/${name}` }));
 
 const THEME_KEY = 'inkako-theme';
 const THEME_OPTIONS = [

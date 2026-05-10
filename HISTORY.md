@@ -36,3 +36,22 @@ Add a new release script to bump version, create a version commit, tag the relea
 `package-lock.json` should be updated accordingly when the version is bumped.
 Use `VERSION:` as git commit message beginning.
 ```
+
+### 2026-05-11-build-dist-structure
+```md
+Adjust the build script to output js/css files with content hash in the filename for better caching. The index.html can be generated from a template and should reference the hashed filenames. The output structure should be organized as follows:
+dist
+├── examples
+|   ├── sakamoto.png
+|   ├── sensei.png
+|   └── ...
+├── favicon.ico
+├── index.html
+├── robots.txt
+└── static
+    ├── bundle-[hash].js
+    └── bundle-[hash].css
+The index.html template can be embedded in the build script.
+When I run `npm run dev` and visit the app in the browser, it trys to load `/dist/examples/sakamoto.png` but gets 404.
+Copy ~/Pictures/cast_128dp_opsz48.svg to public and add it as favicon. Add a default robots.txt file.
+```
