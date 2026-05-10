@@ -28,3 +28,11 @@ Add public/examples/ folder and copy sakamoto.png/sensei.png/konata.png/kenny_ch
 Add example image selection in the UI, and allow users to select and preview these example images.
 `npm run build` should include these example images and `npm run dev` should serve them correctly.
 ```
+
+### 2026-05-11-release-script
+```md
+Create a `scripts` directory and move the existing `build.mjs` script into it.
+Add a new release script to bump version, create a version commit, tag the release, and push to the repository. Version rules should follow semantic versioning, and the script should accept a release type (patch, minor, major) as an argument, defaulting to patch if not provided. When not in master branch, the version should be bumped with a branch name suffix (e.g., `1.0.0-beta.1` in `beta` branch, `1.0.0-feature-xyz.1` in `feature/xyz` branch).
+`package-lock.json` should be updated accordingly when the version is bumped.
+Use `VERSION:` as git commit message beginning.
+```
