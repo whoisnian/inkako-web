@@ -55,3 +55,9 @@ The index.html template can be embedded in the build script.
 When I run `npm run dev` and visit the app in the browser, it trys to load `/dist/examples/sakamoto.png` but gets 404.
 Copy ~/Pictures/cast_128dp_opsz48.svg to public and add it as favicon. Add a default robots.txt file.
 ```
+
+### 2026-05-12-scan-devices-filter
+```md
+Can not discover target devices with services filters. But can find them in chrome://bluetooth-internals/#devices.
+Try to use namePrefix filter to scan devices with name prefix `NDB-8`.
+```

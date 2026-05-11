@@ -55,7 +55,7 @@ export class InkakoDevice {
       throw new Error('Web Bluetooth is not supported in this browser. Use Chrome on desktop or Android.');
     }
     this.device = await navigator.bluetooth.requestDevice({
-      filters: [{ services: [SERVICE_UUID] }],
+      filters: [{ namePrefix: 'NDB-8' }],
       optionalServices: [SERVICE_UUID],
     });
     this.device.addEventListener('gattserverdisconnected', this._onDisconnected);
