@@ -40,12 +40,12 @@ function buildHtml(jsPath, cssPath) {
         }
       } catch (e) { /* ignore */ }
     })();
-  <\/script>
+  </script>
   <link rel="stylesheet" href="${cssPath}" />
 </head>
 <body>
   <div id="root"></div>
-  <script type="module" src="${jsPath}"><\/script>
+  <script type="module" src="${jsPath}"></script>
 </body>
 </html>
 `;
