@@ -34,6 +34,79 @@ const THEME_OPTIONS = [
   { id: 'dark', label: 'Dark' },
 ];
 
+const FOOTER_LINKS = [
+  {
+    href: 'https://www.ztemall.com/cn/goodsdetail/1453',
+    label: 'Product Details',
+    title: 'Official product page · ZTE Mall (CN)',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M20.59 13.41 13.41 20.59a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.83z" />
+        <line x1="7" y1="7" x2="7.01" y2="7" />
+      </svg>
+    ),
+  },
+  {
+    href: 'https://m-bbs.ztedevices.com/?master_type=0&type=6&id=657159&state=',
+    label: 'User Manual',
+    title: 'Official user manual · ZTE Devices BBS (CN)',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+      </svg>
+    ),
+  },
+  {
+    href: 'https://m-appstore.nubia.com/detail_soft.html?softId=2192555',
+    label: 'Android App',
+    title: 'Official Android app · Nubia App Store (CN)',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M7.2 5.6 6 3.5a.5.5 0 0 1 .87-.5l1.2 2.08A7.9 7.9 0 0 1 12 4.2c1.42 0 2.76.3 3.93.88l1.2-2.08a.5.5 0 0 1 .87.5l-1.2 2.1A7.5 7.5 0 0 1 20 11.5H4a7.5 7.5 0 0 1 3.2-5.9zM9 9a.9.9 0 1 0 0-1.8A.9.9 0 0 0 9 9zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8zM3.5 12.8a1.3 1.3 0 0 1 2.6 0v5.2a1.3 1.3 0 1 1-2.6 0zm14.4 0a1.3 1.3 0 0 1 2.6 0v5.2a1.3 1.3 0 1 1-2.6 0zM7 12.5h10v7.6a1.4 1.4 0 0 1-1.4 1.4H15v2.1a1.3 1.3 0 1 1-2.6 0V21.5h-1.8V23.6a1.3 1.3 0 1 1-2.6 0V21.5h-.6A1.4 1.4 0 0 1 7 20.1z" />
+      </svg>
+    ),
+  },
+  {
+    href: 'https://apps.apple.com/cn/app/inkbloom/id6462630055',
+    label: 'InkBloom (iOS)',
+    title: 'Unofficial iOS alternative · InkBloom on App Store (CN)',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.05 12.04c-.03-2.93 2.4-4.34 2.51-4.41-1.37-2-3.5-2.28-4.26-2.31-1.81-.18-3.54 1.07-4.46 1.07-.93 0-2.35-1.04-3.87-1.01-1.99.03-3.83 1.16-4.85 2.94-2.07 3.59-.53 8.91 1.49 11.83 1 1.43 2.18 3.04 3.71 2.98 1.49-.06 2.05-.96 3.86-.96 1.8 0 2.31.96 3.88.93 1.6-.03 2.62-1.46 3.6-2.9 1.14-1.66 1.6-3.27 1.63-3.36-.04-.02-3.12-1.2-3.15-4.76M14.31 4.04c.82-1 1.38-2.38 1.22-3.77-1.18.05-2.62.79-3.47 1.78-.76.87-1.43 2.27-1.25 3.62 1.32.1 2.66-.67 3.5-1.63" />
+      </svg>
+    ),
+  },
+  {
+    href: 'https://github.com/whoisnian/inkako-web',
+    label: 'inkako-web',
+    title: 'GitHub source · whoisnian/inkako-web',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.8-1.6 8.2-6.1 8.2-11.4C24 5.9 18.6.5 12 .5z" />
+      </svg>
+    ),
+  },
+  {
+    href: 'https://github.com/whoisnian/misc/tree/master/cmd/inkako',
+    label: 'inkako CLI',
+    title: 'Alternative Go/Python reverse-engineered implementation',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+    ),
+  },
+];
+
+const COMPAT_LIST = [
+  { ok: true,  browser: 'Chrome',   platform: 'Android', title: 'Tested on Chrome for Android — Web Bluetooth works.' },
+  { ok: true,  browser: 'Chrome',   platform: 'Windows', title: 'Tested on Chrome for Windows — Web Bluetooth works.' },
+  { ok: true,  browser: 'Bluefy',   platform: 'iOS',     title: 'Tested on Bluefy — Web BLE browser for iOS.', href: 'https://apps.apple.com/cn/app/bluefy-web-ble-browser/id1492822055' },
+  { ok: false, browser: 'Chromium', platform: 'Linux',   title: 'Fails on Chromium for Linux: "No Services matching UUID 79223401-1a11-21e1-8300-0940a1146603 found in Device".' },
+];
+
 function readSavedTheme() {
   try {
     const saved = localStorage.getItem(THEME_KEY);
@@ -469,6 +542,65 @@ export default function App() {
           ))}
         </div>
       </section>
+
+      <footer className="app-footer">
+        <div className="footer-row">
+          <span className="footer-label">Tested:</span>
+          {COMPAT_LIST.map((c) => {
+            const className = `tested-chip ${c.ok ? 'ok' : 'err'}${c.href ? ' is-link' : ''}`;
+            const body = (
+              <>
+                <span aria-hidden="true" className="mark">{c.ok ? '✓' : '✗'}</span>
+                {c.browser} · {c.platform}
+              </>
+            );
+            return c.href ? (
+              <a
+                key={`${c.browser}-${c.platform}`}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={c.title}
+                className={className}
+              >
+                {body}
+              </a>
+            ) : (
+              <span
+                key={`${c.browser}-${c.platform}`}
+                className={className}
+                title={c.title}
+              >
+                {body}
+              </span>
+            );
+          })}
+          <a
+            className="footer-spec"
+            href="https://github.com/WebBluetoothCG/web-bluetooth/blob/main/implementation-status.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="WebBluetoothCG implementation status"
+          >
+            spec status ↗
+          </a>
+        </div>
+        <div className="footer-row">
+          {FOOTER_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={link.title}
+              className="footer-link"
+            >
+              {link.icon}
+              <span>{link.label}</span>
+            </a>
+          ))}
+        </div>
+      </footer>
     </div>
   );
 }

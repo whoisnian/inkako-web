@@ -405,3 +405,95 @@ label.checkbox {
 .muted { color: var(--muted); font-size: 0.85rem; }
 
 .spacer { flex: 1; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  word-break: break-all;
+}
+
+.app-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 0 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+}
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.footer-label {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-right: 2px;
+}
+
+.tested-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--fg);
+  background: transparent;
+  white-space: nowrap;
+  cursor: help;
+}
+.tested-chip .mark { font-weight: 700; }
+.tested-chip.ok  { color: var(--ok);  border-color: var(--ok); }
+.tested-chip.err { color: var(--err); border-color: var(--err); }
+.tested-chip.is-link {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.tested-chip.is-link:hover {
+  background: var(--bg-2);
+  text-decoration: none;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--fg);
+  background: transparent;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.footer-link:hover {
+  background: var(--bg-2);
+  border-color: var(--border-hover);
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.footer-spec {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.footer-spec:hover { color: var(--fg); text-decoration: none; }

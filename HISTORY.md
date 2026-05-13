@@ -61,3 +61,19 @@ Copy ~/Pictures/cast_128dp_opsz48.svg to public and add it as favicon. Add a def
 Can not discover target devices with services filters. But can find them in chrome://bluetooth-internals/#devices.
 Try to use namePrefix filter to scan devices with name prefix `NDB-8`.
 ```
+
+### 2026-05-13-external-info-links
+```md
+Add footer links with suitable icons and tooltips:
+1. offical product details page (CN): https://www.ztemall.com/cn/goodsdetail/1453
+2. offical user manual (CN): https://m-bbs.ztedevices.com/?master_type=0&type=6&id=657159&state=
+3. offical android app (CN): https://m-appstore.nubia.com/detail_soft.html?softId=2192555
+4. maybe unofficial alternative ios app (CN): https://apps.apple.com/cn/app/inkbloom/id6462630055
+5. github source code of current app: https://github.com/whoisnian/inkako-web
+6. alternative reversed golang/python implementation: https://github.com/whoisnian/misc/tree/master/cmd/inkako
+
+Add tested platform info based on https://github.com/WebBluetoothCG/web-bluetooth/blob/main/implementation-status.md:
+* Passed for Chrome on Android and Windows
+* Passed for Bluefy (https://apps.apple.com/cn/app/bluefy-web-ble-browser/id1492822055) on ios
+* `No Services matching UUID 79223401-1a11-21e1-8300-0940a1146603 found in Device` in Chromium on Linux, even with `chrome://flags/#enable-experimental-web-platform-features` enabled
+```
