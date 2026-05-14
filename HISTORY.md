@@ -77,3 +77,9 @@ Add tested platform info based on https://github.com/WebBluetoothCG/web-bluetoot
 * Passed for Bluefy (https://apps.apple.com/cn/app/bluefy-web-ble-browser/id1492822055) on ios
 * `No Services matching UUID 79223401-1a11-21e1-8300-0940a1146603 found in Device` in Chromium on Linux, even with `chrome://flags/#enable-experimental-web-platform-features` enabled
 ```
+
+### 2026-05-13-optimize-image-canvas
+```md
+The window.devicePixelRatio maybe various across platforms. Optimize the image canvas css size to make the preview clearer on high dpi screens.
+The canvas default shows black background in light mode. Adjust it to suitable color based on theme.
+```

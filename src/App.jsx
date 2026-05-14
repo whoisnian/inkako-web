@@ -237,16 +237,37 @@ export default function App() {
     }
   }, [appendLog]);
 
+  // Snap preview CSS size so each canvas pixel maps to an integer
+  // number of device pixels (or canvas pixels per device pixel when
+  // the canvas is larger than the cap). Keeps the preview crisp under
+  // any window.devicePixelRatio.
+  useEffect(() => {
+    const root = document.documentElement;
+    const maxCssDim = 428;
+    const apply = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const { width: cw, height: ch } = screenDims;
+      const longest = Math.max(cw, ch);
+      const target = (maxCssDim * dpr) / longest;
+      const ratio = target >= 1 ? Math.floor(target) : 1 / Math.ceil(1 / target);
+      root.style.setProperty('--preview-css-w', `${(ratio * cw) / dpr}px`);
+      root.style.setProperty('--preview-aspect', `${cw} / ${ch}`);
+    };
+    apply();
+    window.addEventListener('resize', apply);
+    return () => window.removeEventListener('resize', apply);
+  }, [screenDims.width, screenDims.height]);
+
   // Draw the source image onto the source canvas at screen dimensions.
+  // Leave the pixel buffer transparent when empty so the canvas's CSS
+  // background (--canvas-bg) shows through and follows the active theme.
   useEffect(() => {
     const canvas = sourceCanvasRef.current;
     if (!canvas) return;
     canvas.width = screenDims.width;
     canvas.height = screenDims.height;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#000';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
     if (imageBitmap) {
+      const ctx = canvas.getContext('2d');
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = 'high';
       ctx.drawImage(imageBitmap, 0, 0, canvas.width, canvas.height);
@@ -283,18 +304,15 @@ export default function App() {
     return () => { cancelled = true; clearTimeout(timer); };
   }, [imageBitmap, screenDims.width, screenDims.height, adjustments, dither, appendLog]);
 
-  // Render processed preview onto its canvas.
+  // Render processed preview onto its canvas. When there's nothing to
+  // render, leave the buffer transparent and let --canvas-bg show through.
   useEffect(() => {
     const canvas = previewCanvasRef.current;
     if (!canvas) return;
     canvas.width = screenDims.width;
     canvas.height = screenDims.height;
-    const ctx = canvas.getContext('2d');
     if (processed && processed.preview) {
-      ctx.putImageData(processed.preview, 0, 0);
-    } else {
-      ctx.fillStyle = '#111';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      canvas.getContext('2d').putImageData(processed.preview, 0, 0);
     }
   }, [processed, screenDims.width, screenDims.height]);
 
