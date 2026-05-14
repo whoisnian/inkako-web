@@ -83,3 +83,11 @@ Add tested platform info based on https://github.com/WebBluetoothCG/web-bluetoot
 The window.devicePixelRatio maybe various across platforms. Optimize the image canvas css size to make the preview clearer on high dpi screens.
 The canvas default shows black background in light mode. Adjust it to suitable color based on theme.
 ```
+
+### 2026-05-14-readme
+```md
+Add README.md with project description, features, external info links, and real photos of the examples.
+Use external info links from commit 5938a10a08a7fa655485e5d9745be63daaa5fd38.
+Real photos from ~/Pictures/examples.webp and ~/Pictures/results.webp.
+Use <table> to layout the two photos side by side with 50% width each.
+```
