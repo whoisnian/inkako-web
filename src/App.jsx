@@ -25,7 +25,11 @@ const EXAMPLE_IMAGES = [
   'hakumei_mikochi.jpg',
   'zelda.jpg',
   'silksong.jpg',
-].map((name) => ({ name, src: `examples/${name}` }));
+].map((name) => ({
+  name,
+  src: `examples/${name}`,
+  thumb: `examples/thumbs/${name.replace(/\.(png|jpg|jpeg)$/i, '.webp')}`,
+}));
 
 const THEME_KEY = 'inkako-theme';
 const THEME_OPTIONS = [
@@ -148,6 +152,7 @@ export default function App() {
 
   const [imageBitmap, setImageBitmap] = useState(null);
   const [imageName, setImageName] = useState('');
+  const [loadingExample, setLoadingExample] = useState('');
 
   const [adjustments, setAdjustments] = useState(DEFAULT_ADJUSTMENTS);
   const [dither, setDither] = useState(true);
@@ -224,6 +229,10 @@ export default function App() {
   }, [appendLog]);
 
   const handleExample = useCallback(async (example) => {
+    const SHOW_DELAY_MS = 100;
+    const showTimer = setTimeout(() => {
+      setLoadingExample(example.name);
+    }, SHOW_DELAY_MS);
     try {
       const res = await fetch(example.src);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -234,6 +243,9 @@ export default function App() {
       appendLog(`Loaded example ${example.name} (${bm.width}×${bm.height})`);
     } catch (err) {
       appendLog(`Failed to load example: ${err.message || err}`, 'err');
+    } finally {
+      clearTimeout(showTimer);
+      setLoadingExample((cur) => (cur === example.name ? '' : cur));
     }
   }, [appendLog]);
 
@@ -453,11 +465,13 @@ export default function App() {
             <button
               key={ex.name}
               type="button"
-              className={`example${imageName === ex.name ? ' active' : ''}`}
+              className={`example${imageName === ex.name ? ' active' : ''}${loadingExample === ex.name ? ' loading' : ''}`}
               onClick={() => handleExample(ex)}
+              disabled={loadingExample === ex.name}
               title={ex.name}
             >
-              <img src={ex.src} alt={ex.name} loading="lazy" />
+              <img src={ex.thumb} alt={ex.name} loading="lazy" />
+              {loadingExample === ex.name && <span className="example-spinner" aria-hidden="true" />}
             </button>
           ))}
         </div>

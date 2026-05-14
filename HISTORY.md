@@ -91,3 +91,10 @@ Use external info links from commit 5938a10a08a7fa655485e5d9745be63daaa5fd38.
 Real photos from ~/Pictures/examples.webp and ~/Pictures/results.webp.
 Use <table> to layout the two photos side by side with 50% width each.
 ```
+
+### 2026-05-14-example-images-thumbnails
+```md
+Use `cwebp` to create webp thumbnails of the original example images for better performance. The original images are still kept in the public/examples/ folder for actual processing.
+Add loading animation to the selected thumbnail when the original image downloading.
+Add 100ms delay to disable loading animation for browser cached images.
+```
